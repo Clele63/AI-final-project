@@ -218,7 +218,7 @@ def main(args):
         # Paramètres classiques
         num_train_epochs=args.epochs,
         logging_steps=100,
-        evaluation_strategy="epoch",
+        eval_strategy="epoch",
         save_strategy="epoch",
         load_best_model_at_end=True,
         report_to="none" # Désactive WandB/etc.
