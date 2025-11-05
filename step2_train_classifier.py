@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 import torch
-from datasets import Dataset
+from datasets import Dataset, ClassLabel, Features
 from transformers import (
     AutoTokenizer,
     AutoModelForSequenceClassification,
@@ -83,11 +83,23 @@ def assign_labels(df, categories_db, embedding_model_name, device):
     logging.info("Étiquettes assignées et mémoire nettoyée.")
     return df_final
 
-def tokenize_data(df, tokenizer_name, test_size):
+def tokenize_data(df, tokenizer_name, test_size, n_labels):
     """Convertit en Dataset HF, divise et tokenise."""
     logging.info("Conversion en Dataset Hugging Face et tokenisation...")
     full_dataset = Dataset.from_pandas(df)
-    hf_datasets = full_dataset.train_test_split(test_size=test_size, stratify_by_column="label")
+
+    # --- CORRECTION ---
+    # On doit 'caster' la colonne 'label' en ClassLabel pour que la stratification fonctionne
+    logging.info(f"Application du type ClassLabel pour {n_labels} classes...")
+    new_features = Features({
+        'text': full_dataset.features['text'],
+        'label': ClassLabel(num_classes=n_labels)
+    })
+    full_dataset = full_dataset.cast(new_features)
+    # --- FIN CORRECTION ---
+
+    # Division en jeux d'entraînement et de test
+    hf_datasets = full_dataset.train_test_split(test_size=TEST_SIZE, stratify_by_column="label")
     
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
     
@@ -180,7 +192,8 @@ def main(args):
     df_labeled = assign_labels(df, categories_db, args.embedding_model, device)
     
     # 3. Tokenisation
-    tokenized_datasets, tokenizer = tokenize_data(df_labeled, args.base_model, args.test_size)
+    tokenized_datasets, tokenizer = tokenize_data(df_labeled, args.base_model, args.test_size, n_labels)
+    # tokenized_datasets, tokenizer = tokenize_data(df_labeled, args.base_model, args.test_size)
     
     # 4. Chargement du modèle de classification
     logging.info(f"Chargement du modèle de base : {args.base_model}")
