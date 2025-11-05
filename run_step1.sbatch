@@ -1,44 +1,54 @@
 #!/bin/bash
-#SBATCH --job-name=step1_create_categories # Nom du job
-#SBATCH --output=slurm_logs/step1_categories.log # Fichier de log
-#SBATCH --ntasks=1                          # 1 tâche
-#SBATCH --cpus-per-task=8                   # 8 CPUs (sur 32 dispo)
-#SBATCH --mem=32G                           # 32GB de RAM (sur 192G dispo)
-#SBATCH --time=02:00:00                     # Temps max (2 heures)
-#SBATCH --partition=gpu-l40s                # <--- CHANGEMENT
-#SBATCH --gres=gpu:l40s:1                   # <--- CHANGEMENT (demande 1 GPU L40S sur les 2)
+#SBATCH --job-name=step1_create_categories
+#SBATCH --output=slurm_logs/step1_categories-%j.out # Fichier de sortie
+#SBATCH --error=slurm_logs/step1_categories-%j.err  # Fichier d'erreur
+#SBATCH --partition=gpu-l40s                   # Partition (confirmé)
+#SBATCH --gres=gpu:1                             # 1 GPU (confirmé par la doc)
+#SBATCH --ntasks=1                               # 1 Tâche (confirmé par la doc)
+#SBATCH --cpus-per-task=8                    # CPUs pour l'encodage
+#SBATCH --mem=32G                            # RAM pour le clustering
+#SBATCH --time=02:00:00                      # Limite de temps
 
-echo "=== Début du job Step 1 (Clustering) sur morgoth ==="
-date
+echo "=== Job 1 (Clustering) Démarré sur $SLURM_NODELIST ==="
+echo "Job ID : $SLURM_JOB_ID"
+echo "GPU(s) alloué(s) : $CUDA_VISIBLE_DEVICES"
+echo "----------------------------------------------------"
 
-# 1. Charger les modules Python et CUDA de base
-# !! À ADAPTER : commandes spécifiques à votre cluster
-# ex: module load python/3.11 cuda/12.2 (ou autre)
-# Faites 'module avail' sur morgoth pour voir les noms exacts
-# module purge
-# module load ...
+# --- 1. Chargement des modules ---
+# CORRIGE L'ERREUR 'python: commande introuvable'
+echo "Chargement des modules (Python, CUDA)..."
+module purge
+module load python/3.11   # <-- !! REMPLACEZ-MOI (par un nom de 'module avail')
+module load cuda/12.2     # <-- !! REMPLACEZ-MOI (par un nom de 'module avail')
+echo "Modules chargés."
 
-# 2. S'assurer que 'uv' est dans le PATH
+# --- 2. Configuration de l'environnement UV ---
+# CORRIGE L'ERREUR 'uv: commande introuvable'
+# Nécessaire si uv est installé via pip --user
 export PATH="$HOME/.local/bin:$PATH"
 
-# 3. Créer l'environnement virtuel local
-echo "Création de l'environnement virtuel avec 'uv venv .venv'..."
-uv venv .venv --seed
+# On se place dans le dossier où le job a été soumis
+# (là où se trouvent vos scripts .py et requirements.txt)
+cd $SLURM_SUBMIT_DIR
+echo "Dossier de travail : $(pwd)"
 
-# 4. Activer l'environnement
-source .venv/bin/activate
+echo "Initialisation du projet UV (si non-existant)..."
+# Crée pyproject.toml si besoin, en se basant sur la doc
+if [ ! -f "pyproject.toml" ]; then
+  uv init --quiet
+fi
 
-# 5. Installer les dépendances avec 'uv pip sync'
-echo "Synchronisation des dépendances avec 'uv pip sync requirements.txt'..."
+echo "Synchronisation des dépendances de requirements.txt..."
+# Crée/met à jour le .venv local et installe les paquets
 uv pip sync requirements.txt
 
-# 6. Lancer le script Python
-echo "Lancement du script step1_create_categories.py..."
-python step1_create_categories.py \
+# --- 3. Exécution du script ---
+echo "Lancement du script step1_create_categories.py via 'uv run'..."
+# 'uv run' active l'environnement .venv juste pour cette commande
+uv run python step1_create_categories.py \
     --input_csv "inputs/github_data_with_readmes.csv" \
     --output_dir "outputs/step1_clustering" \
     --n_categories 200 \
     --chunk_size 2000
 
-echo "=== Fin du job Step 1 ==="
-date
+echo "=== Fin du Job 1 ==="
