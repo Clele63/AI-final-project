@@ -7,6 +7,7 @@ import logging
 import argparse
 import os
 import matplotlib
+import csv
 matplotlib.use('Agg') # Mode non-interactif pour SLURM
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -17,6 +18,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.cluster import MiniBatchKMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+csv.field_size_limit(100 * 1024 * 1024)
 # Configuration du logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 

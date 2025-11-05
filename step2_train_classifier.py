@@ -7,6 +7,7 @@ import logging
 import argparse
 import os
 import matplotlib
+import csv
 matplotlib.use('Agg') # Mode non-interactif
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -28,6 +29,7 @@ from sklearn.metrics import (
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 
+csv.field_size_limit(100 * 1024 * 1024)
 # Configuration du logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
