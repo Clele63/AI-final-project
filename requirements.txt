@@ -10,3 +10,5 @@ accelerate
 bitsandbytes
 matplotlib
 seaborn
+pytz
+python-dateutil

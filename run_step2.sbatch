@@ -1,43 +1,38 @@
 #!/bin/bash
 #SBATCH --job-name=step2_train_classifier
-#SBATCH --output=slurm_logs/step2_training-%j.out # Fichier de sortie
-#SBATCH --error=slurm_logs/step2_training-%j.err  # Fichier d'erreur
-#SBATCH --partition=gpu-l40s                  # Partition
-#SBATCH --gres=gpu:1                            # 1 GPU
+#SBATCH --output=slurm_logs/step2_training-%j.out
+#SBATCH --error=slurm_logs/step2_training-%j.err
+#SBATCH --partition=gpu-l40s
+#SBATCH --gres=gpu:1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4                   # Moins de CPUs
-#SBATCH --mem=64G                           # Plus de RAM pour le modèle
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=64G
 #SBATCH --time=06:00:00
 
-echo "=== Job 2 (Training) Démarré sur $SLURM_NODELIST ==="
-echo "Job ID : $SLURM_JOB_ID"
-echo "GPU(s) alloué(s) : $CUDA_VISIBLE_DEVICES"
+# --- Config ---
+UV_EXEC="/home/lcoussy/.local/bin/uv"
+
+echo "=== Job 2 (Training) Démarré ==="
+echo "Utilisation de UV via : $UV_EXEC"
 echo "----------------------------------------------------"
 
-# --- 1. Chargement des modules ---
-# CORRIGE L'ERREUR 'python: commande introuvable'
-echo "Chargement des modules (Python, CUDA)..."
-module purge
-module load python/3.11   # <-- !! REMPLACEZ-MOI (par un nom de 'module avail')
-module load cuda/12.2     # <-- !! REMPLACEZ-MOI (par un nom de 'module avail')
-echo "Modules chargés."
-
-# --- 2. Configuration de l'environnement UV ---
-# CORRIGE L'ERREUR 'uv: commande introuvable'
-export PATH="$HOME/.local/bin:$PATH"
-
-# On se place dans le dossier de soumission
+# --- Initialisation uv ---
 cd $SLURM_SUBMIT_DIR
 echo "Dossier de travail : $(pwd)"
 
-echo "Synchronisation des dépendances (réutilisation du .venv)..."
-# 'uv' est intelligent : il verra que pyproject.toml et .venv
-# existent déjà (créés par le Job 1) et les réutilisera.
-uv pip sync requirements.txt
+# --- MÊME LOGIQUE (sécurisé) ---
 
-# --- 3. Exécution du script ---
-echo "Lancement du script step2_train_classifier.py via 'uv run'..."
-uv run python step2_train_classifier.py \
+# ÉTAPE 1: S'assurer que le .venv existe
+echo "Étape 1/3 : Vérification du .venv..."
+$UV_EXEC venv --python 3.12
+
+# ÉTAPE 2: Synchroniser les dépendances (sera rapide)
+echo "Étape 2/3 : Synchronisation des dépendances..."
+$UV_EXEC pip sync requirements.txt
+
+# ÉTAPE 3: Exécuter le script
+echo "Étape 3/3 : Lancement du script Python..."
+$UV_EXEC run python step2_train_classifier.py \
     --input_csv "inputs/github_data_with_readmes.csv" \
     --categories_file "outputs/step1_clustering/github_categories_database.json" \
     --output_model_dir "outputs/step2_classification/distilroberta_github_classifier" \
