@@ -1,5 +1,3 @@
 # .gitignore
-
-**output**
 **.venv**
 **slurm_logs**
