@@ -186,7 +186,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Étape 1 : Création de catégories de dépôts GitHub par Clustering.")
     
     # Arguments
-    parser.add_argument('--input_csv', type=str, default="inputs/github_data_with_readmes.csv", help="Chemin vers le CSV d'entrée.")
+    parser.add_argument('--input_csv', type=str, default="data/github_data_with_readmes.csv", help="Chemin vers le CSV d'entrée.")
     parser.add_argument('--output_dir', type=str, default="outputs/step1_clustering", help="Dossier où sauvegarder les résultats.")
     
     # Paramètres du modèle

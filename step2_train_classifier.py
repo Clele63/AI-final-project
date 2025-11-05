@@ -247,7 +247,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Étape 2 : Fine-tuning d'un classifieur de dépôts GitHub.")
 
     # Fichiers
-    parser.add_argument('--input_csv', type=str, default="inputs/github_data_with_readmes.csv")
+    parser.add_argument('--input_csv', type=str, default="data/github_data_with_readmes.csv")
     parser.add_argument('--categories_file', type=str, default="outputs/step1_clustering/github_categories_database.json")
     parser.add_argument('--output_model_dir', type=str, default="outputs/step2_classification/distilroberta_github_classifier")
     
