@@ -37,7 +37,14 @@ def train_clustering(csv_file, chunk_size, n_categories, embedding_model):
         n_init='auto'
     )
     
-    csv_reader = pd.read_csv(csv_file, chunksize=chunk_size, iterator=True)
+    # csv_reader = pd.read_csv(csv_file, chunksize=chunk_size, iterator=True)
+    csv_reader = pd.read_csv(
+        csv_file, 
+        chunksize=chunk_size, 
+        iterator=True, 
+        engine='python', 
+        on_bad_lines='warn'
+    )
     
     for chunk in tqdm(csv_reader, desc="Entraînement du clustering"):
         chunk['description'] = chunk['description'].fillna('')
@@ -70,8 +77,15 @@ def assign_and_name_categories(csv_file, chunk_size, n_categories, kmeans_model,
     texts_per_category = [[] for _ in range(n_categories)]
     repos_per_category_count = [0] * n_categories
     
-    csv_reader_pass2 = pd.read_csv(csv_file, chunksize=chunk_size, iterator=True)
-    
+    # csv_reader_pass2 = pd.read_csv(csv_file, chunksize=chunk_size, iterator=True)
+    csv_reader_pass2 = pd.read_csv(
+        csv_file, 
+        chunksize=chunk_size, 
+        iterator=True, 
+        engine='python', 
+        on_bad_lines='warn'
+    )
+
     for chunk in tqdm(csv_reader_pass2, desc="Assignation & Collecte de texte"):
         chunk['description'] = chunk['description'].fillna('')
         chunk['readme_content'] = chunk['readme_content'].fillna('')

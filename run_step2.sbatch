@@ -10,32 +10,43 @@
 #SBATCH --time=06:00:00
 
 # --- Config ---
-UV_EXEC="/home/lcoussy/.local/bin/uv"
 
-echo "=== Job 2 (Training) Démarré ==="
-echo "Utilisation de UV via : $UV_EXEC"
-echo "----------------------------------------------------"
+# (Identique au step1) : Garantit un environnement propre
+unset VIRTUAL_ENV
+export PATH="$HOME/.local/bin:$PATH" 
+
+# (Adapté pour step2) : Répertoire isolé pour ce job
+UV_PROJECT=$HOME/slurm/ai-final-project/step2
+
+echo "=== Informations SLURM ==="
+echo "Job ID : $SLURM_JOB_ID"
+echo "Noeud : $SLURM_NODELIST"
+echo "GPU(s) alloué(s) : $CUDA_VISIBLE_DEVICES"
+echo "--------------------------"
 
 # --- Initialisation uv ---
-cd $SLURM_SUBMIT_DIR
-echo "Dossier de travail : $(pwd)"
+echo "=== Préparation de l'environnement uv ==="
 
-# --- MÊME LOGIQUE (sécurisé) ---
+# (Identique au step1) : Crée et se place dans le dossier de travail isolé
+mkdir -p "$UV_PROJECT"
+cd "$UV_PROJECT"
 
-# ÉTAPE 1: S'assurer que le .venv existe
-echo "Étape 1/3 : Vérification du .venv..."
-$UV_EXEC venv --python 3.12
+# (Identique au step1) : Initialise le projet s'il n'existe pas
+if [ ! -f "pyproject.toml" ]; then
+  uv init --python 3.12 --quiet
+fi
 
-# ÉTAPE 2: Synchroniser les dépendances (sera rapide)
-echo "Étape 2/3 : Synchronisation des dépendances..."
-$UV_EXEC pip sync requirements.txt
+# (Identique au step1) : Installe les dépendances dans le venv isolé
+# Le requirements.txt est à son chemin absolu
+uv pip install -r /home/lcoussy/AI-final-project/requirements.txt
 
-# ÉTAPE 3: Exécuter le script
-echo "Étape 3/3 : Lancement du script Python..."
-$UV_EXEC run python step2_train_classifier.py \
-    --input_csv "inputs/github_data_with_readmes.csv" \
-    --categories_file "outputs/step1_clustering/github_categories_database.json" \
-    --output_model_dir "outputs/step2_classification/distilroberta_github_classifier" \
+echo "Étape 3/3 : Lancement du script Python (Training)..."
+# (Adapté pour step2) : Lance le script de training
+# Tous les chemins de fichiers sont ABSOLUS
+uv run python /home/lcoussy/AI-final-project/step2_train_classifier.py \
+    --input_csv "/home/lcoussy/AI-final-project/data/github_data_with_readmes.csv" \
+    --categories_file "/home/lcoussy/AI-final-project/outputs/step1_clustering/github_categories_database.json" \
+    --output_model_dir "/home/lcoussy/AI-final-project/outputs/step2_classification/distilroberta_github_classifier" \
     --base_model "distilroberta-base" \
     --epochs 3 \
     --batch_size 4 \

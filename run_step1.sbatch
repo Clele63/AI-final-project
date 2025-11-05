@@ -11,9 +11,9 @@
 
 # --- Config ---
 
-UV_PROJECT=$HOME/slurm/ai-final-project/step1
-
+unset VIRTUAL_ENV
 export PATH="$HOME/.local/bin:$PATH" 
+UV_PROJECT=$HOME/slurm/ai-final-project/step1
 
 echo "=== Informations SLURM ==="
 echo "Job ID : $SLURM_JOB_ID"
@@ -33,9 +33,9 @@ if [ ! -f "pyproject.toml" ]; then
   uv init --python 3.12 --quiet
 fi
 
-uv pip sync /home/lcoussy/AI-final-project/requirements.txt
+# uv pip sync /home/lcoussy/AI-final-project/requirements.txt
+uv pip install -r /home/lcoussy/AI-final-project/requirements.txt
 
-# source "$UV_PROJECT/.venv/bin/activate"
 
 echo "Étape 3/3 : Lancement du script Python..."
 uv run python /home/lcoussy/AI-final-project/step1_create_categories.py \

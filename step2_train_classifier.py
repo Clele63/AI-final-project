@@ -34,7 +34,8 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 def load_data(csv_file, categories_file):
     """Charge le CSV et la base de catégories JSON."""
     logging.info(f"Chargement des données depuis {csv_file}")
-    df = pd.read_csv(csv_file)
+    # df = pd.read_csv(csv_file)
+    df = pd.read_csv(csv_file, engine='python', on_bad_lines='warn')
     df['description'] = df['description'].fillna('')
     df['readme_content'] = df['readme_content'].fillna('')
     df['full_text'] = df['description'] + ' ' + df['readme_content']
