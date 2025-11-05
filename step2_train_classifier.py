@@ -83,7 +83,7 @@ def assign_labels(df, categories_db, embedding_model_name, device):
     logging.info("Étiquettes assignées et mémoire nettoyée.")
     return df_final
 
-def tokenize_data(df, tokenizer_name, test_size, n_labels):
+def tokenize_data(df, tokenizer_name, test_size_arg, n_labels):
     """Convertit en Dataset HF, divise et tokenise."""
     logging.info("Conversion en Dataset Hugging Face et tokenisation...")
     full_dataset = Dataset.from_pandas(df)
@@ -99,7 +99,7 @@ def tokenize_data(df, tokenizer_name, test_size, n_labels):
     # --- FIN CORRECTION ---
 
     # Division en jeux d'entraînement et de test
-    hf_datasets = full_dataset.train_test_split(test_size=TEST_SIZE, stratify_by_column="label")
+    hf_datasets = full_dataset.train_test_split(test_size=test_size_arg, stratify_by_column="label")
     
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
     
