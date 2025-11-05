@@ -144,38 +144,58 @@ def save_classification_report_and_matrix(trainer, test_dataset, id2label, outpu
     preds = np.argmax(predictions.predictions, axis=1)
     labels = predictions.label_ids
     
-    label_names = [id2label[i] for i in range(len(id2label))]
-    
+    # --- CORRECTION ---
+    # On doit fournir la liste complète de tous les labels (0-199)
+    # à scikit-learn, car le jeu de test n'en contient peut-être que 199.
+    all_label_ids = list(id2label.keys()) # Sera [0, 1, ..., 199]
+    label_names = [id2label[i] for i in all_label_ids]
+    # --- FIN CORRECTION ---
+
     # 1. Rapport de classification (texte)
-    report = classification_report(labels, preds, target_names=label_names, zero_division=0)
+    report = classification_report(
+        labels, 
+        preds, 
+        labels=all_label_ids,      # <-- Correction ici
+        target_names=label_names, 
+        zero_division=0
+    )
     report_path = os.path.join(output_dir, "classification_report.txt")
     with open(report_path, 'w') as f:
         f.write(report)
     logging.info(f"Rapport de classification sauvegardé dans {report_path}")
     
     # 2. Matrice de confusion (image)
-    # On ne garde que les labels présents pour alléger la matrice
-    present_labels_ids = sorted(list(set(labels) | set(preds)))
-    present_label_names = [id2label[i] for i in present_labels_ids]
     
-    if len(present_labels_ids) > 50:
-        logging.warning("Plus de 50 labels, la matrice de confusion sera illisible. Sauvegarde tronquée.")
-        # On pourrait tronquer, ou simplement ne pas la générer. Ici, on tente.
+    # L'ancienne logique 'present_labels_ids' est supprimée.
+    
+    if len(all_label_ids) > 50:
+        logging.warning(f"Plus de 50 labels ({len(all_label_ids)}), la matrice de confusion sera illisible/tronquée.")
         figsize = (50, 40)
     else:
-        figsize = (max(15, len(present_labels_ids)//2), max(12, len(present_labels_ids)//2))
+        figsize = (max(15, len(all_label_ids)//2), max(12, len(all_label_ids)//2))
 
-    cm = confusion_matrix(labels, preds, labels=present_labels_ids)
+    cm = confusion_matrix(
+        labels, 
+        preds, 
+        labels=all_label_ids # <-- Correction ici
+    )
+    
     plt.figure(figsize=figsize)
     sns.heatmap(cm, annot=True, fmt='d', 
-                xticklabels=present_label_names, 
-                yticklabels=present_label_names)
+                xticklabels=label_names, # <-- Correction ici
+                yticklabels=label_names  # <-- Correction ici
+               )
     plt.title("Matrice de Confusion")
     plt.ylabel('Vrai Label')
     plt.xlabel('Label Prédit')
     plt.tight_layout()
     matrix_path = os.path.join(output_dir, "confusion_matrix.png")
-    plt.savefig(matrix_path)
+    
+    try:
+        plt.savefig(matrix_path)
+    except Exception as e:
+        logging.error(f"Erreur lors de la sauvegarde de la matrice de confusion (probablement trop grande) : {e}")
+        
     plt.close()
     logging.info(f"Matrice de confusion sauvegardée dans {matrix_path}")
 
