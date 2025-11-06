@@ -36,14 +36,19 @@ fi
 
 uv pip install -r /home/lcoussy/AI-final-project/requirements.txt
 
+export TRANSFORMERS_VERBOSITY=info
+
 echo "Étape 3/3 : Lancement du script Python (Training)..."
 uv run python /home/lcoussy/AI-final-project/step2_train_classifier.py \
     --input_csv "/home/lcoussy/AI-final-project/data/github_data_with_readmes.csv" \
     --categories_file "/home/lcoussy/AI-final-project/outputs/step1_clustering/github_categories_database.json" \
-    --output_model_dir "/home/lcoussy/AI-final-project/outputs/step2_classification/distilroberta_github_classifier" \
+    --output_dir "/home/lcoussy/AI-final-project/outputs/step2_classification" \
+    --model_name "distilroberta_github_classifier" \
     --base_model "distilroberta-base" \
     --epochs 3 \
     --batch_size 4 \
-    --grad_accum_steps 8
+    --n_categories 100 \
+    --grad_accum_steps 8 \
+    --similarity_threshold 0.6
 
 echo "=== Fin du Job 2 ==="

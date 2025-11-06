@@ -13,3 +13,5 @@ seaborn
 pytz
 python-dateutil
 six
+einops
+flash-attention

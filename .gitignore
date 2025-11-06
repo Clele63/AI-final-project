@@ -1,3 +1,4 @@
 # .gitignore
 **.venv**
 **slurm_logs**
+**tmp**

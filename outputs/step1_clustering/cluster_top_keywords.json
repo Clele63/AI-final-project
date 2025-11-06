@@ -1,802 +1,502 @@
 {
     "Cluster 0": {
-        "name": "twitter, http, fossasia, api, org",
-        "repo_count": 223
+        "name": "video, youtube, img, io, http, src, code, tv, download, api, www, use, license, player, href",
+        "auto_name": "Générique / Autre",
+        "repo_count": 480
     },
     "Cluster 1": {
-        "name": "ai, img, agent, io, install",
-        "repo_count": 318
+        "name": "ai, model, agent, api, models, openai, org, run, python, code, bash, img, arxiv, md, agents",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 809
     },
     "Cluster 2": {
-        "name": "android, app, ios, style, view",
-        "repo_count": 351
+        "name": "dart, src, pub, app, io, packages, png, width, dev, master, ui, td, href, widget, shields",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 327
     },
     "Cluster 3": {
-        "name": "js, jquery, http, css, html",
-        "repo_count": 490
+        "name": "js, http, javascript, html, jquery, code, css, org, web, license, use, io, element, browser, build",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 915
     },
     "Cluster 4": {
-        "name": "license, http, img, png, master",
-        "repo_count": 312
+        "name": "crates, cargo, license, img, docs, let, svg, run, shields, build, org, main, install, badge, src",
+        "auto_name": "Développement Rust",
+        "repo_count": 761
     },
     "Cluster 5": {
-        "name": "io, org, img, install, license",
-        "repo_count": 442
+        "name": "github, md, http, png, img, www, master, images, blob, pdf, cn, jpg, py, image, src",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 1531
     },
     "Cluster 6": {
-        "name": "net, microsoft, nuget, code, windows",
-        "repo_count": 292
+        "name": "py, data, detection, training, python, dataset, images, http, segmentation, models, pytorch, td, object, png, face",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 464
     },
     "Cluster 7": {
-        "name": "agent, code, api, agents, data",
-        "repo_count": 381
+        "name": "net, azure, microsoft, nuget, dotnet, core, project, new, build, docs, org, api, io, http, code",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 417
     },
     "Cluster 8": {
-        "name": "server, http, tcp, org, network",
-        "repo_count": 206
+        "name": "java, json, kotlin, build, code, license, data, md, docs, img, string, yml, http, run, html",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 719
     },
     "Cluster 9": {
-        "name": "cargo, docs, license, let, org",
-        "repo_count": 548
+        "name": "github, animation, gif, http, license, img, software, android, master, view, use, self, app, swift, src",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 342
     },
     "Cluster 10": {
-        "name": "build, 3d, http, org, image",
-        "repo_count": 326
+        "name": "python, install, http, data, www, org, use, py, file, user, search, txt, img, io, twitter",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 539
     },
     "Cluster 11": {
-        "name": "ruby, postgresql, data, redis, database",
-        "repo_count": 208
+        "name": "io, code, org, build, game, http, project, img, use, docs, engine, license, run, www, wiki",
+        "auto_name": "Générique / Autre",
+        "repo_count": 568
     },
     "Cluster 12": {
-        "name": "err, http, img, server, nil",
-        "repo_count": 547
+        "name": "files, data, org, use, storage, http, io, license, install, server, google, drive, run, directory, img",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 336
     },
     "Cluster 13": {
-        "name": "github, png, http, www, br",
-        "repo_count": 511
+        "name": "href, style, png, license, alt, br, org, center, code, width, td, md, http, install, python",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 1514
     },
     "Cluster 14": {
-        "name": "pypi, install, image, data, shields",
-        "repo_count": 747
+        "name": "security, org, www, io, docker, md, test, code, cve, http, use, license, img, file, install",
+        "auto_name": "IA / Sécurité",
+        "repo_count": 528
     },
     "Cluster 15": {
-        "name": "http, clj, clojurescript, io, html",
-        "repo_count": 115
+        "name": "kernel, linux, build, org, wiki, http, project, install, use, windows, make, usb, code, emulator, game",
+        "auto_name": "Programmation Système (Linux)",
+        "repo_count": 480
     },
     "Cluster 16": {
-        "name": "discord, br, org, style, license",
-        "repo_count": 1030
+        "name": "github, windows, dll, process, code, shellcode, file, exe, use, using, install, run, build, target, net",
+        "auto_name": "Développement Système (Windows)",
+        "repo_count": 336
     },
     "Cluster 17": {
-        "name": "api, http, org, docs, install",
-        "repo_count": 883
+        "name": "js, io, redux, img, component, app, docs, import, state, function, components, example, use, const, div",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 1219
     },
     "Cluster 18": {
-        "name": "node, href, http, function, const",
-        "repo_count": 858
+        "name": "src, shields, org, href, license, svg, badge, alt, docs, style, www, png, use, align, master",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 842
     },
     "Cluster 19": {
-        "name": "www, org, http, data, md",
-        "repo_count": 730
+        "name": "build, python, org, code, run, use, img, md, install, license, yml, docs, project, master, version",
+        "auto_name": "Développement Logiciel",
+        "repo_count": 1477
     },
     "Cluster 20": {
-        "name": "small_or_generic",
-        "repo_count": 3
+        "name": "windows, window, app, kbd, img, license, png, src, use, org, project, td, http, file, io",
+        "auto_name": "Générique / Autre",
+        "repo_count": 543
     },
     "Cluster 21": {
-        "name": "firmware, github, openwrt, boot, linux",
-        "repo_count": 119
+        "name": "video, py, python, td, img, image, sup, data, training, dataset, arxiv, io, demo, bash, images",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 498
     },
     "Cluster 22": {
-        "name": "tensorflow, model, learning, org, pdf",
-        "repo_count": 422
+        "name": "http, 3d, js, org, webgl, www, io, img, game, d3, build, engine, project, code, src",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 426
     },
     "Cluster 23": {
-        "name": "github, view, swift, http, software",
-        "repo_count": 371
+        "name": "img, td, model, href, py, src, image, python, huggingface, data, models, sup, png, org, images",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 580
     },
     "Cluster 24": {
-        "name": "py, data, images, python, dataset",
-        "repo_count": 438
+        "name": "github, data, series, model, time, org, trading, forecasting, arxiv, io, python, www, models, code, img",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 157
     },
     "Cluster 25": {
-        "name": "img, src, image, png, master",
-        "repo_count": 250
+        "name": "org, license, install, build, src, png, use, discord, br, www, docker, docs, code, http, style",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 1598
     },
     "Cluster 26": {
-        "name": "md, html, org, io, http",
-        "repo_count": 214
+        "name": "learning, www, org, pdf, data, machine, python, course, http, youtube, deep, arxiv, md, ipynb, ai",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 702
     },
     "Cluster 27": {
-        "name": "boot, cloud, io, http, springboot",
-        "repo_count": 150
+        "name": "ts, type, js, npm, const, string, code, run, json, import, io, src, node, types, use",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 302
     },
     "Cluster 28": {
-        "name": "macos, install, app, mac, build",
-        "repo_count": 233
+        "name": "install, npm, run, sh, http, org, script, build, nix, git, file, command, use, bash, server",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 567
     },
     "Cluster 29": {
-        "name": "git, commit, repository, use, file",
-        "repo_count": 449
+        "name": "audio, music, org, app, http, spotify, file, install, use, www, io, img, license, ffmpeg, build",
+        "auto_name": "IA / Musique",
+        "repo_count": 756
     },
     "Cluster 30": {
-        "name": "app, license, code, http, project",
-        "repo_count": 653
+        "name": "run, container, image, license, shields, docs, server, org, use, build, bash, images, compose, http, badge",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 555
     },
     "Cluster 31": {
-        "name": "flask, http, data, org, code",
-        "repo_count": 342
+        "name": "vim, markdown, text, file, html, http, plugin, md, code, install, io, org, nvim, default, files",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 698
     },
     "Cluster 32": {
-        "name": "org, golang, string, err, http",
-        "repo_count": 557
+        "name": "angular, js, webpack, npm, http, app, run, node, use, build, html, io, server, src, file",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 653
     },
     "Cluster 33": {
-        "name": "unity, shader, png, shaders, img",
-        "repo_count": 104
+        "name": "href, const, src, node, http, br, api, html, shields, td, badge, docs, use, javascript, url",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 1183
     },
     "Cluster 34": {
-        "name": "rails, end, config, rb, user",
-        "repo_count": 407
+        "name": "www, org, http, data, project, arxiv, pdf, open, md, code, source, io, license, repository, twitter",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 1125
     },
     "Cluster 35": {
-        "name": "symfony, http, org, use, new",
-        "repo_count": 465
+        "name": "license, app, img, google, build, src, png, http, code, org, java, master, project, use, io",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 1016
     },
     "Cluster 36": {
-        "name": "small_or_generic",
-        "repo_count": 1
+        "name": "img, src, js, href, import, ui, component, svg, div, admin, shields, components, template, run, app",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 466
     },
     "Cluster 37": {
-        "name": "small_or_generic",
-        "repo_count": 2
+        "name": "github, code, build, cmake, md, http, org, library, install, use, source, project, file, repository, make",
+        "auto_name": "Développement Logiciel (CMake)",
+        "repo_count": 464
     },
     "Cluster 38": {
-        "name": "io, docker, run, install, img",
-        "repo_count": 300
+        "name": "python, graphql, data, install, td, model, http, master, shields, graph, arxiv, use, license, code, src",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 836
     },
     "Cluster 39": {
-        "name": "series, forecasting, org, io, img",
-        "repo_count": 52
+        "name": "pypi, api, badge, image, code, project, py, use, license, data, docs, import, readthedocs, http, file",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 861
     },
     "Cluster 40": {
-        "name": "ts, type, js, npm, string",
-        "repo_count": 246
+        "name": "license, app, img, java, src, view, id, color, http, int, br, new, png, library, public",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 815
     },
     "Cluster 41": {
-        "name": "schema, api, data, http, openapi",
-        "repo_count": 253
+        "name": "swift, app, ios, http, license, project, let, use, xcode, code, build, cocoapods, apple, using, software",
+        "auto_name": "Développement Mobile (iOS)",
+        "repo_count": 609
     },
     "Cluster 42": {
-        "name": "http, io, code, org, use",
-        "repo_count": 305
+        "name": "org, spark, http, io, apache, sql, python, database, www, use, md, query, license, docs, run",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 556
     },
     "Cluster 43": {
-        "name": "spark, apache, http, io, org",
-        "repo_count": 325
+        "name": "org, img, robot, game, io, install, ros, code, src, python, py, arxiv, http, www, data",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 356
     },
     "Cluster 44": {
-        "name": "src, style, license, org, br",
-        "repo_count": 1250
+        "name": "github, py, org, install, code, http, io, data, use, file, run, image, www, pypi, using",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 702
     },
     "Cluster 45": {
-        "name": "img, http, png, www, io",
-        "repo_count": 1201
+        "name": "django, flask, code, py, io, http, pypi, org, install, run, import, app, use, docs, project",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 327
     },
     "Cluster 46": {
-        "name": "xcode, swift, build, ios, app",
-        "repo_count": 188
+        "name": "theme, css, color, png, img, http, vim, io, font, dark, themes, icons, org, src, install",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 603
     },
     "Cluster 47": {
-        "name": "img, user, org, io, href",
-        "repo_count": 89
+        "name": "img, io, href, http, org, src, license, theme, css, jekyll, docs, html, www, align, png",
+        "auto_name": "Ici, les mots-clés sont principalement liés à HTML et CSS, qui",
+        "repo_count": 733
     },
     "Cluster 48": {
-        "name": "data, sqlite, img, mysql, io",
-        "repo_count": 295
+        "name": "http, io, img, use, code, org, install, build, png, www, data, license, html, src, images",
+        "auto_name": "Générique / Autre",
+        "repo_count": 460
     },
     "Cluster 49": {
-        "name": "device, esp32, install, wifi, http",
-        "repo_count": 269
-    },
-    "Cluster 50": {
-        "name": "md, org, io, blockchain, docs",
-        "repo_count": 170
-    },
-    "Cluster 51": {
-        "name": "docs, cluster, helm, md, img",
-        "repo_count": 515
-    },
-    "Cluster 52": {
-        "name": "cmake, build, github, code, install",
-        "repo_count": 194
-    },
-    "Cluster 53": {
-        "name": "graphql, io, graph, data, chart",
-        "repo_count": 468
-    },
-    "Cluster 54": {
-        "name": "kernel, linux, org, code, md",
-        "repo_count": 198
-    },
-    "Cluster 55": {
-        "name": "app, http, use, project, license",
-        "repo_count": 275
-    },
-    "Cluster 56": {
-        "name": "redux, js, state, io, npm",
-        "repo_count": 430
-    },
-    "Cluster 57": {
-        "name": "javascript, js, github, http, code",
-        "repo_count": 285
-    },
-    "Cluster 58": {
         "name": "small_or_generic",
-        "repo_count": 2
-    },
-    "Cluster 59": {
-        "name": "editor, text, kbd, http, code",
-        "repo_count": 219
-    },
-    "Cluster 60": {
-        "name": "files, backup, use, google, io",
-        "repo_count": 218
-    },
-    "Cluster 61": {
-        "name": "js, test, http, api, tests",
-        "repo_count": 258
-    },
-    "Cluster 62": {
-        "name": "password, passwords, use, key, org",
-        "repo_count": 158
-    },
-    "Cluster 63": {
-        "name": "http, grid, div, html, io",
-        "repo_count": 125
-    },
-    "Cluster 64": {
-        "name": "http, web, org, io, code",
-        "repo_count": 325
-    },
-    "Cluster 65": {
-        "name": "amazon, lambda, sdk, cloud, serverless",
-        "repo_count": 164
-    },
-    "Cluster 66": {
-        "name": "img, app, io, src, license",
-        "repo_count": 257
-    },
-    "Cluster 67": {
-        "name": "github, md, http, png, www",
-        "repo_count": 1300
-    },
-    "Cluster 68": {
-        "name": "icons, svg, icon, emoji, img",
-        "repo_count": 214
-    },
-    "Cluster 69": {
-        "name": "crates, rs, cargo, license, io",
-        "repo_count": 242
-    },
-    "Cluster 70": {
-        "name": "machine, pdf, www, org, data",
-        "repo_count": 501
-    },
-    "Cluster 71": {
-        "name": "dir, options, class, queue, default",
-        "repo_count": 5
-    },
-    "Cluster 72": {
-        "name": "js, facebook, data, localstorage, org",
-        "repo_count": 78
-    },
-    "Cluster 73": {
-        "name": "www, org, http, engine, code",
-        "repo_count": 342
-    },
-    "Cluster 74": {
-        "name": "gpu, nvidia, org, use, cuda",
-        "repo_count": 338
-    },
-    "Cluster 75": {
-        "name": "ng, js, npm, angularjs, ui",
-        "repo_count": 222
-    },
-    "Cluster 76": {
-        "name": "github, py, install, code, pypi",
-        "repo_count": 319
-    },
-    "Cluster 77": {
-        "name": "webpack, js, url, node, http",
-        "repo_count": 320
-    },
-    "Cluster 78": {
-        "name": "color, themes, png, img, css",
-        "repo_count": 280
-    },
-    "Cluster 79": {
-        "name": "mail, org, emails, html, img",
-        "repo_count": 177
-    },
-    "Cluster 80": {
-        "name": "azure, microsoft, cloud, net, build",
-        "repo_count": 199
-    },
-    "Cluster 81": {
-        "name": "data, org, io, www, nuclei",
-        "repo_count": 86
-    },
-    "Cluster 82": {
-        "name": "img, dart, src, pub, app",
-        "repo_count": 314
-    },
-    "Cluster 83": {
-        "name": "small_or_generic",
-        "repo_count": 3
-    },
-    "Cluster 84": {
-        "name": "notes, obsidian, org, img, io",
-        "repo_count": 141
-    },
-    "Cluster 85": {
-        "name": "license, org, src, docs, install",
-        "repo_count": 637
-    },
-    "Cluster 86": {
-        "name": "true, lsp, require, function, telescope",
-        "repo_count": 189
-    },
-    "Cluster 87": {
-        "name": "cpu, build, install, org, battery",
-        "repo_count": 104
-    },
-    "Cluster 88": {
-        "name": "youtube, video, img, io, download",
-        "repo_count": 283
-    },
-    "Cluster 89": {
-        "name": "extension, browser, firefox, img, src",
-        "repo_count": 219
-    },
-    "Cluster 90": {
-        "name": "small_or_generic",
+        "auto_name": "Générique / Autre",
         "repo_count": 1
     },
-    "Cluster 91": {
-        "name": "auto, install, qt5, org, client",
-        "repo_count": 6
+    "Cluster 50": {
+        "name": "discord, img, bot, chat, io, api, telegram, src, href, use, ai, license, app, shields, chatgpt",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 822
     },
-    "Cluster 92": {
-        "name": "model, py, python, detection, img",
+    "Cluster 51": {
+        "name": "model, py, tensorflow, org, arxiv, models, training, neural, python, data, learning, code, network, paper, pdf",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 976
+    },
+    "Cluster 52": {
+        "name": "windows, build, microsoft, code, project, file, use, license, game, org, version, source, install, dll, exe",
+        "auto_name": "Développement Logiciel (Windows)",
+        "repo_count": 334
+    },
+    "Cluster 53": {
+        "name": "zip, compression, image, zlib, data, mb, files, build, org, version, library, png, license, install, archive",
+        "auto_name": "Compression de Données",
+        "repo_count": 110
+    },
+    "Cluster 54": {
+        "name": "dns, ip, http, hosts, io, example, txt, domain, org, proxy, file, use, img, install, bash",
+        "auto_name": "IA / Réseaux / DNS",
+        "repo_count": 270
+    },
+    "Cluster 55": {
+        "name": "err, string, org, http, golang, code, godoc, func, server, use, value, io, api, package, file",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 840
+    },
+    "Cluster 56": {
+        "name": "git, commit, repository, file, use, code, project, http, repo, org, run, install, license, add, pull",
+        "auto_name": "Développement Logiciel (Git)",
+        "repo_count": 670
+    },
+    "Cluster 57": {
+        "name": "install, wifi, device, esp32, http, org, devices, build, img, www, using, io, arduino, wiki, python",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 318
+    },
+    "Cluster 58": {
+        "name": "github, md, http, png, www, docs, br, pdf, master, python, images, img, java, jpg, blob",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 436
+    },
+    "Cluster 59": {
+        "name": "unity, shader, png, gif, imgur, project, assets, http, br, img, license, shaders, www, use, light",
+        "auto_name": "Développement Web (Frontend)",
         "repo_count": 116
     },
-    "Cluster 93": {
-        "name": "microsoft, domain, net, user, security",
-        "repo_count": 68
+    "Cluster 60": {
+        "name": "laravel, symfony, org, use, img, http, spatie, license, user, io, class, model, packagist, api, file",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 766
     },
-    "Cluster 94": {
-        "name": "let, plugin, mode, http, file",
-        "repo_count": 221
+    "Cluster 61": {
+        "name": "img, www, 3d, project, license, org, http, use, src, open, br, png, design, io, wiki",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 161
     },
-    "Cluster 95": {
+    "Cluster 62": {
+        "name": "license, http, img, java, master, png, br, md, blob, app, io, src, www, cn, image",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 401
+    },
+    "Cluster 63": {
+        "name": "server, network, build, io, install, license, wireguard, img, vpn, use, run, http, port, client, protocol",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 410
+    },
+    "Cluster 64": {
+        "name": "gpu, nvidia, build, use, org, library, io, vulkan, http, project, code, using, license, memory, source",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 473
+    },
+    "Cluster 65": {
+        "name": "docs, cluster, helm, md, img, operator, docker, service, license, kube, kubectl, use, yaml, build, dev",
+        "auto_name": "Développement Cloud (Kubernetes)",
+        "repo_count": 549
+    },
+    "Cluster 66": {
+        "name": "java, apache, org, spring, license, io, build, version, maven, http, server, project, use, run, code",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 653
+    },
+    "Cluster 67": {
+        "name": "driver, bluetooth, android, sudo, usb, linux, install, device, kernel, dkms, windows, ble, devices, firmware, using",
+        "auto_name": "Développement Mobile (Android)",
+        "repo_count": 83
+    },
+    "Cluster 68": {
+        "name": "js, mongodb, graphql, database, http, docker, node, run, io, api, server, npm, data, org, use",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 381
+    },
+    "Cluster 69": {
+        "name": "img, http, png, www, br, io, src, cn, master, md, image, href, blob, alt, org",
+        "auto_name": "Générique / Autre",
+        "repo_count": 1620
+    },
+    "Cluster 70": {
+        "name": "rails, end, user, config, file, rb, new, rspec, data, class, example, test, api, install, org",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 563
+    },
+    "Cluster 71": {
+        "name": "compose, container, image, images, install, docs, http, build, use, server, bash, file, containers, io, dev",
+        "auto_name": "Développement Cloud (Containers)",
+        "repo_count": 328
+    },
+    "Cluster 72": {
+        "name": "server, http, client, org, use, io, websocket, js, request, webrtc, run, build, message, code, using",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 442
+    },
+    "Cluster 73": {
+        "name": "http, org, api, docs, server, docker, shields, client, license, use, md, br, user, master, using",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 1029
+    },
+    "Cluster 74": {
         "name": "small_or_generic",
+        "auto_name": "Générique / Autre",
         "repo_count": 2
     },
+    "Cluster 75": {
+        "name": "small_or_generic",
+        "auto_name": "Générique / Autre",
+        "repo_count": 1
+    },
+    "Cluster 76": {
+        "name": "code, library, license, org, use, lua, build, md, std, int, run, io, install, http, type",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 526
+    },
+    "Cluster 77": {
+        "name": "pytorch, model, py, data, torch, training, tensorflow, install, code, org, train, models, images, png, image",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 496
+    },
+    "Cluster 78": {
+        "name": "shields, br, svg, js, docs, npm, div, td, license, width, css, badge, style, png, www",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 1238
+    },
+    "Cluster 79": {
+        "name": "swift, cocoapods, carthage, view, http, let, license, ios, self, src, style, image, org, software, use",
+        "auto_name": "Développement Mobile (iOS)",
+        "repo_count": 843
+    },
+    "Cluster 80": {
+        "name": "javascript, function, var, node, http, const, use, code, object, npm, script, module, data, run, api",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 632
+    },
+    "Cluster 81": {
+        "name": "redis, data, http, use, server, org, io, database, md, license, www, run, docs, cluster, distributed",
+        "auto_name": "Développement Cloud (Infrastructure)",
+        "repo_count": 352
+    },
+    "Cluster 82": {
+        "name": "https, js, http, jquery, css, element, html, plugin, io, javascript, npm, use, license, li, script",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 451
+    },
+    "Cluster 83": {
+        "name": "md, png, master, docs, http, br, www, blob, io, image, api, img, py, blog, docker",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 818
+    },
+    "Cluster 84": {
+        "name": "io, http, server, docker, run, docs, app, use, license, www, org, install, project, chat, md",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 432
+    },
+    "Cluster 85": {
+        "name": "www, que, br, md, em, youtube, curso, javascript, um, você, youtu, uma, img, en, watch",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 143
+    },
+    "Cluster 86": {
+        "name": "file, pdf, org, http, image, io, files, install, use, img, license, png, www, build, python",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 434
+    },
+    "Cluster 87": {
+        "name": "aws, terraform, cloud, lambda, amazon, docs, s3, google, io, use, spring, data, code, license, run",
+        "auto_name": "Développement Cloud (AWS)",
+        "repo_count": 354
+    },
+    "Cluster 88": {
+        "name": "windows, github, microsoft, powershell, user, file, license, use, exe, install, tool, www, code, security, domain",
+        "auto_name": "Développement Système (Windows)",
+        "repo_count": 347
+    },
+    "Cluster 89": {
+        "name": "tmux, terminal, vim, shell, bash, command, sh, install, file, kbd, session, window, org, default, run",
+        "auto_name": "Développement Terminal",
+        "repo_count": 280
+    },
+    "Cluster 90": {
+        "name": "api, js, http, client, org, use, token, user, server, google, oauth, app, run, io, authentication",
+        "auto_name": "Développement Web (Backend)",
+        "repo_count": 485
+    },
+    "Cluster 91": {
+        "name": "extension, browser, firefox, web, img, google, run, src, page, png, http, chromium, build, npm, js",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 344
+    },
+    "Cluster 92": {
+        "name": "firmware, build, www, device, install, img, org, use, io, license, wiki, md, open, files, project",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 280
+    },
+    "Cluster 93": {
+        "name": "time, cpu, build, org, license, file, install, performance, linux, use, memory, run, kernel, app, http",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 181
+    },
+    "Cluster 94": {
+        "name": "android, app, ios, expo, img, style, text, io, js, docs, project, npm, string, ui, view",
+        "auto_name": "Développement Web (Frontend)",
+        "repo_count": 389
+    },
+    "Cluster 95": {
+        "name": "hyperledger, fabric, org, io, project, license, yarn, use, http, notice, docker, img, docs, md, apps",
+        "auto_name": "Développement Blockchain",
+        "repo_count": 27
+    },
     "Cluster 96": {
-        "name": "dns, domain, ip, http, example",
+        "name": "http, pdf, ros, slam, 3d, dataset, build, install, camera, lidar, www, run, imu, arxiv, src",
+        "auto_name": "Développement Robotique",
         "repo_count": 179
     },
     "Cluster 97": {
-        "name": "github, windows, process, dll, memory",
-        "repo_count": 219
+        "name": "data, http, api, docs, img, io, org, install, run, docker, time, server, source, license, www",
+        "auto_name": "Générique / Autre",
+        "repo_count": 436
     },
     "Cluster 98": {
-        "name": "image, blur, android, license, view",
-        "repo_count": 46
+        "name": "images, img, png, license, src, http, io, use, width, android, jpg, install, video, diffusion, blur",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 265
     },
     "Cluster 99": {
-        "name": "license, app, src, png, color",
-        "repo_count": 616
-    },
-    "Cluster 100": {
-        "name": "small_or_generic",
-        "repo_count": 1
-    },
-    "Cluster 101": {
-        "name": "github, www, algorithms, md, code",
-        "repo_count": 213
-    },
-    "Cluster 102": {
-        "name": "small_or_generic",
-        "repo_count": 2
-    },
-    "Cluster 103": {
-        "name": "code, md, int, lua, org",
-        "repo_count": 430
-    },
-    "Cluster 104": {
-        "name": "carthage, cocoapods, view, let, http",
-        "repo_count": 655
-    },
-    "Cluster 105": {
-        "name": "js, http, browser, web, org",
-        "repo_count": 290
-    },
-    "Cluster 106": {
-        "name": "javascript, function, var, http, node",
-        "repo_count": 395
-    },
-    "Cluster 107": {
-        "name": "log, io, logging, file, use",
-        "repo_count": 163
-    },
-    "Cluster 108": {
-        "name": "data, http, io, docker, api",
-        "repo_count": 301
-    },
-    "Cluster 109": {
-        "name": "license, plugin, gradle, build, java",
-        "repo_count": 128
-    },
-    "Cluster 110": {
-        "name": "code, img, python, build, docs",
-        "repo_count": 1073
-    },
-    "Cluster 111": {
-        "name": "image, file, img, org, io",
-        "repo_count": 381
-    },
-    "Cluster 112": {
-        "name": "img, js, src, href, import",
-        "repo_count": 439
-    },
-    "Cluster 113": {
-        "name": "img, http, web, org, href",
-        "repo_count": 271
-    },
-    "Cluster 114": {
-        "name": "md, png, master, http, img",
-        "repo_count": 533
-    },
-    "Cluster 115": {
-        "name": "docker, module, server, org, rtmp",
-        "repo_count": 72
-    },
-    "Cluster 116": {
-        "name": "microsoft, powershell, install, script, exe",
-        "repo_count": 207
-    },
-    "Cluster 117": {
-        "name": "github, data, org, pdf, http",
-        "repo_count": 278
-    },
-    "Cluster 118": {
-        "name": "tensorflow, model, learning, keras, data",
-        "repo_count": 214
-    },
-    "Cluster 119": {
-        "name": "py, pytorch, python, training, data",
-        "repo_count": 378
-    },
-    "Cluster 120": {
-        "name": "pdf, org, js, text, http",
-        "repo_count": 132
-    },
-    "Cluster 121": {
-        "name": "ai, shields, docs, license, code",
-        "repo_count": 500
-    },
-    "Cluster 122": {
-        "name": "files, zip, org, compression, data",
-        "repo_count": 188
-    },
-    "Cluster 123": {
-        "name": "td, img, stable, video, huggingface",
-        "repo_count": 228
-    },
-    "Cluster 124": {
-        "name": "proxy, http, server, io, img",
-        "repo_count": 376
-    },
-    "Cluster 125": {
-        "name": "td, py, data, image, sup",
-        "repo_count": 510
-    },
-    "Cluster 126": {
-        "name": "org, http, scala, code, src",
-        "repo_count": 204
-    },
-    "Cluster 127": {
-        "name": "game, build, http, org, emulator",
-        "repo_count": 200
-    },
-    "Cluster 128": {
-        "name": "alt, td, br, shields, js",
-        "repo_count": 780
-    },
-    "Cluster 129": {
-        "name": "small_or_generic",
-        "repo_count": 2
-    },
-    "Cluster 130": {
-        "name": "bot, upload, telegram_media_downloader, download, files",
-        "repo_count": 10
-    },
-    "Cluster 131": {
-        "name": "audio, org, ffmpeg, build, http",
-        "repo_count": 106
-    },
-    "Cluster 132": {
-        "name": "android, sound, http, use, js",
-        "repo_count": 165
-    },
-    "Cluster 133": {
-        "name": "chatgpt, chat, bot, telegram, api",
-        "repo_count": 479
-    },
-    "Cluster 134": {
-        "name": "app, license, http, google, org",
-        "repo_count": 160
-    },
-    "Cluster 135": {
-        "name": "3d, py, http, camera, pdf",
-        "repo_count": 245
-    },
-    "Cluster 136": {
-        "name": "install, wiki, build, io, firmware",
-        "repo_count": 343
-    },
-    "Cluster 137": {
-        "name": "test, http, tests, code, testing",
-        "repo_count": 188
-    },
-    "Cluster 138": {
-        "name": "model, org, models, arxiv, data",
-        "repo_count": 462
-    },
-    "Cluster 139": {
-        "name": "paho, eclipse, build, mosca, io",
-        "repo_count": 16
-    },
-    "Cluster 140": {
-        "name": "small_or_generic",
-        "repo_count": 1
-    },
-    "Cluster 141": {
-        "name": "small_or_generic",
-        "repo_count": 2
-    },
-    "Cluster 142": {
-        "name": "bluetooth, android, driver, sudo, device",
-        "repo_count": 78
-    },
-    "Cluster 143": {
-        "name": "audio, speech, model, py, text",
-        "repo_count": 369
-    },
-    "Cluster 144": {
-        "name": "css, io, theme, href, png",
-        "repo_count": 378
-    },
-    "Cluster 145": {
-        "name": "jekyll, theme, blog, pages, site",
-        "repo_count": 135
-    },
-    "Cluster 146": {
-        "name": "let, swiftui, app, ios, http",
-        "repo_count": 215
-    },
-    "Cluster 147": {
-        "name": "license, github, view, app, id",
-        "repo_count": 344
-    },
-    "Cluster 148": {
-        "name": "small_or_generic",
-        "repo_count": 1
-    },
-    "Cluster 149": {
-        "name": "table, grid, data, img, sortable",
-        "repo_count": 95
-    },
-    "Cluster 150": {
-        "name": "small_or_generic",
-        "repo_count": 1
-    },
-    "Cluster 151": {
-        "name": "run, container, image, shields, server",
-        "repo_count": 455
-    },
-    "Cluster 152": {
-        "name": "spatie, img, model, packagist, user",
-        "repo_count": 348
-    },
-    "Cluster 153": {
-        "name": "github, code, org, book, www",
-        "repo_count": 247
-    },
-    "Cluster 154": {
-        "name": "img, io, www, src, href",
-        "repo_count": 416
-    },
-    "Cluster 155": {
-        "name": "terraform, aws, cloud, provider, docs",
-        "repo_count": 131
-    },
-    "Cluster 156": {
-        "name": "https, js, http, jquery, github",
-        "repo_count": 320
-    },
-    "Cluster 157": {
-        "name": "py, model, torch, org, install",
-        "repo_count": 339
-    },
-    "Cluster 158": {
-        "name": "tailwind, bootstrap, ui, css, components",
-        "repo_count": 209
-    },
-    "Cluster 159": {
-        "name": "windows, window, img, org, td",
-        "repo_count": 186
-    },
-    "Cluster 160": {
-        "name": "video, img, io, src, discord",
-        "repo_count": 339
-    },
-    "Cluster 161": {
-        "name": "android, license, alt, e5, br",
-        "repo_count": 47
-    },
-    "Cluster 162": {
-        "name": "music, spotify, img, player, org",
-        "repo_count": 276
-    },
-    "Cluster 163": {
-        "name": "compose, container, run, image, build",
-        "repo_count": 329
-    },
-    "Cluster 164": {
-        "name": "tmux, kbd, command, bash, zsh",
-        "repo_count": 98
-    },
-    "Cluster 165": {
-        "name": "ansible, vagrant, server, deploy, php",
-        "repo_count": 88
-    },
-    "Cluster 166": {
-        "name": "game, games, use, build, app",
-        "repo_count": 59
-    },
-    "Cluster 167": {
-        "name": "js, img, io, component, import",
-        "repo_count": 767
-    },
-    "Cluster 168": {
-        "name": "install, nix, bash, sh, git",
-        "repo_count": 232
-    },
-    "Cluster 169": {
-        "name": "fossasia, www, para, github, md",
-        "repo_count": 234
-    },
-    "Cluster 170": {
-        "name": "python, license, build, use, install",
-        "repo_count": 991
-    },
-    "Cluster 171": {
-        "name": "server, key, io, docs, file",
-        "repo_count": 118
-    },
-    "Cluster 172": {
-        "name": "fonts, sans, source, mono, license",
-        "repo_count": 181
-    },
-    "Cluster 173": {
-        "name": "org, io, maven, http, license",
-        "repo_count": 317
-    },
-    "Cluster 174": {
-        "name": "small_or_generic",
-        "repo_count": 1
-    },
-    "Cluster 175": {
-        "name": "img, png, src, http, www",
-        "repo_count": 692
-    },
-    "Cluster 176": {
-        "name": "dotnet, nuget, core, microsoft, asp",
-        "repo_count": 153
-    },
-    "Cluster 177": {
-        "name": "org, py, arxiv, game, rl",
-        "repo_count": 6
-    },
-    "Cluster 178": {
-        "name": "server, http, function, api, client",
-        "repo_count": 251
-    },
-    "Cluster 179": {
-        "name": "quantopian, pyfolio, alphalens, returns, portfolio",
-        "repo_count": 5
-    },
-    "Cluster 180": {
-        "name": "android, license, io, compose, jetbrains",
-        "repo_count": 138
-    },
-    "Cluster 181": {
-        "name": "pypi, admin, image, code, target",
-        "repo_count": 189
-    },
-    "Cluster 182": {
-        "name": "apache, license, org, code, build",
-        "repo_count": 407
-    },
-    "Cluster 183": {
-        "name": "bucket, amazon, minio, object, storage",
-        "repo_count": 29
-    },
-    "Cluster 184": {
-        "name": "github, security, malware, windows, code",
-        "repo_count": 449
-    },
-    "Cluster 185": {
-        "name": "build, vk, samples, license, br",
-        "repo_count": 59
-    },
-    "Cluster 186": {
-        "name": "js, app, node, react, run",
-        "repo_count": 389
-    },
-    "Cluster 187": {
-        "name": "png, img, br, music, http",
-        "repo_count": 148
-    },
-    "Cluster 188": {
-        "name": "calendar, date, time, react, picker",
-        "repo_count": 183
-    },
-    "Cluster 189": {
-        "name": "small_or_generic",
-        "repo_count": 1
-    },
-    "Cluster 190": {
-        "name": "vmware, opencv, com, python, github",
-        "repo_count": 37
-    },
-    "Cluster 191": {
-        "name": "org, data, service, www, http",
-        "repo_count": 288
-    },
-    "Cluster 192": {
-        "name": "oauth, auth, user, oauth2, token",
-        "repo_count": 209
-    },
-    "Cluster 193": {
-        "name": "robot, ros, org, img, install",
-        "repo_count": 246
-    },
-    "Cluster 194": {
-        "name": "small_or_generic",
-        "repo_count": 1
-    },
-    "Cluster 195": {
-        "name": "server, http, client, use, io",
-        "repo_count": 385
-    },
-    "Cluster 196": {
-        "name": "org, md, www, security, use",
-        "repo_count": 160
-    },
-    "Cluster 197": {
-        "name": "vim, terminal, colors, theme, solarized",
-        "repo_count": 184
-    },
-    "Cluster 198": {
-        "name": "js, http, webgl, html, gl",
-        "repo_count": 133
-    },
-    "Cluster 199": {
-        "name": "github, latex, template, pdf, resume",
-        "repo_count": 115
+        "name": "br, www, http, py, img, png, master, md, org, src, tensorflow, python, jpg, blob, image",
+        "auto_name": "IA / Machine Learning",
+        "repo_count": 203
     }
 }

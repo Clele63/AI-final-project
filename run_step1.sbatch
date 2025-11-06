@@ -36,12 +36,13 @@ fi
 # uv pip sync /home/lcoussy/AI-final-project/requirements.txt
 uv pip install -r /home/lcoussy/AI-final-project/requirements.txt
 
+export TRANSFORMERS_VERBOSITY=info
 
 echo "Étape 3/3 : Lancement du script Python..."
 uv run python /home/lcoussy/AI-final-project/step1_create_categories.py \
     --input_csv "/home/lcoussy/AI-final-project/data/github_data_with_readmes.csv" \
     --output_dir "/home/lcoussy/AI-final-project/outputs/step1_clustering" \
-    --n_categories 200 \
+    --n_categories 100 \
     --chunk_size 2000
 
 echo "=== Fin du Job 1 ==="
