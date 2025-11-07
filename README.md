@@ -6,7 +6,7 @@ L’objectif est de *tagguer automatiquement* un dépôt (ex : **IA**, **Web Dev
 
 ---
 
-## Note sur la génération (Étape 3 bonus)
+## Note sur la génération
 
 Le cœur du travail repose sur la classification (Étapes 1 et 2). Dû à la complexité de la classification, la génération (Étape 3) n'a été ajoutée qu'à la fin et n'est donc en soi pas abouti.
 
