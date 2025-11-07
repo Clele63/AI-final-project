@@ -33,4 +33,9 @@ echo "Lancement du Job 2 (step2_train_classifier.py)..."
 JOB2_ID=$(sbatch --parsable run_step2.sbatch)
 echo "Job 2 soumis. ID : ${JOB2_ID}"
 
+# 3. Lancer l'étape 3 (Entraînement)
+echo "Lancement du Job 3 (step3_train_generator.py)..."
+JOB3_ID=$(sbatch --parsable run_step3.sbatch)
+echo "Job 3 soumis. ID : ${JOB3_ID}"
+
 echo "Le pipeline est lancé."

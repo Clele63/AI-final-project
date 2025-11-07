@@ -178,7 +178,7 @@ Mots-clés: "{keywords}"
     for i in tqdm(range(n_categories), desc="Nommage par LLM local"):
         if len(texts_per_category[i]) < 5:
             keywords_str = "small_or_generic"
-            category_name = "Générique / Autre" # Nom de fusion
+            category_name = "Générique / Autre"
             auto_name = "Générique / Autre"
         else:
             # 6. Obtenir les mots-clés
@@ -241,6 +241,66 @@ Mots-clés: "{keywords}"
     return categories_database, category_keywords, repos_per_category_count
 # --- FIN DE LA FONCTION ---
 
+def save_theme_distribution_plot(repo_counts, categories_database, output_file):
+    """
+    (Pour le rapport) Sauvegarde un histogramme de la distribution des dépôts,
+    AGRÉGÉE par nom de thème (catégorie).
+    """
+    logging.info(f"Sauvegarde du graphique de distribution agrégé par THÈME dans {output_file}")
+
+    theme_names = []
+    try:
+        # 1. Extraire les noms de thèmes pour chaque ID de cluster
+        # Nous supposons que categories_database est triée par 'category_id'
+        # et correspond à l'ordre de repo_counts.
+        if len(repo_counts) != len(categories_database):
+            logging.warning(f"Incohérence : {len(repo_counts)} comptages vs {len(categories_database)} catégories. Le graphique peut être erroné.")
+        
+        # Crée un map ID -> Nom
+        theme_map = {db['category_id']: db['category_name'] for db in categories_database}
+        
+        # Recrée la liste des noms dans l'ordre des repo_counts (0, 1, 2...)
+        theme_names = [theme_map.get(i, f"Cluster Inconnu {i}") for i in range(len(repo_counts))]
+
+    except KeyError:
+        logging.error("Clé 'category_id' ou 'category_name' non trouvée dans categories_database. Impossible de générer le graphique par thème.")
+        return
+    except Exception as e:
+        logging.error(f"Erreur lors de la préparation des noms de thèmes : {e}")
+        return
+
+    # 2. Créer un DataFrame pour faciliter l'agrégation
+    data = {
+        'cluster_id': list(range(len(repo_counts))),
+        'theme_name': theme_names,
+        'repo_count': repo_counts
+    }
+    df = pd.DataFrame(data)
+
+    # 3. Agréger les comptages par nom de thème
+    # C'est l'étape clé : regrouper les clusters redondants (ex: plusieurs "Développement Web (Frontend)")
+    theme_counts_agg = df.groupby('theme_name')['repo_count'].sum().sort_values(ascending=False)
+
+    num_unique_themes = len(theme_counts_agg)
+    logging.info(f"Les {len(repo_counts)} clusters ont été agrégés en {num_unique_themes} thèmes uniques.")
+
+    # 4. Générer le graphique
+    plt.figure(figsize=(20, 12)) # Hauteur augmentée pour la lisibilité des labels
+    
+    # Utiliser les données agrégées (theme_counts_agg)
+    sns.barplot(x=theme_counts_agg.index, y=theme_counts_agg.values, palette="viridis")
+    
+    plt.title(f"Distribution des dépôts par Thème (Agrégé sur {num_unique_themes} thèmes uniques)", fontsize=16)
+    plt.xlabel("Thème (Nom de Catégorie Généré par LLM)", fontsize=12)
+    plt.ylabel("Nombre de dépôts (Total)", fontsize=12)
+    
+    # Faire pivoter les étiquettes de l'axe X pour éviter la superposition
+    plt.xticks(rotation=75, ha='right', fontsize=10) 
+    
+    plt.tight_layout()
+    plt.savefig(output_file)
+    plt.close()
+    logging.info(f"Graphique des thèmes sauvegardé dans {output_file}")
 
 def save_cluster_distribution_plot(repo_counts, output_file):
     """(Pour le rapport) Sauvegarde un histogramme de la distribution des clusters."""
@@ -288,6 +348,9 @@ def main(args):
 
     plot_path = os.path.join(args.output_dir, "cluster_distribution.png")
     save_cluster_distribution_plot(repo_counts, plot_path)
+
+    plot_path = os.path.join(args.output_dir, "theme_distribution.png")
+    save_theme_distribution_plot(repo_counts, categories_db, plot_path)
 
     logging.info("--- Étape 1 terminée avec succès (nommage automatique par LLM local) ---")
 

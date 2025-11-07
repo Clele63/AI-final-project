@@ -6,7 +6,6 @@
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=64G
 #SBATCH --time=06:00:00
 
 # --- Config ---
@@ -51,4 +50,4 @@ uv run python /home/lcoussy/AI-final-project/step2_train_classifier.py \
     --grad_accum_steps 8 \
     --similarity_threshold 0.6
 
-echo "=== Fin du Job 2 ==="
+echo "=== Fin du Job $SLURM_JOB_ID ==="

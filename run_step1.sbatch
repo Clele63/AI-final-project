@@ -6,7 +6,6 @@
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=32G
 #SBATCH --time=02:00:00
 
 # --- Config ---
@@ -45,4 +44,4 @@ uv run python /home/lcoussy/AI-final-project/step1_create_categories.py \
     --n_categories 100 \
     --chunk_size 2000
 
-echo "=== Fin du Job 1 ==="
+echo "=== Fin du Job $SLURM_JOB_ID ==="

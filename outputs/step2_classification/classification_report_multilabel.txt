@@ -1,32 +1,32 @@
                                                                 precision    recall  f1-score   support
 
-                                        Compression de Données       1.00      0.05      0.10        19
-                                      Développement Blockchain       0.00      0.00      0.00         7
-                                     Développement Cloud (AWS)       0.79      0.68      0.73        87
-                              Développement Cloud (Containers)       0.70      0.79      0.74        86
-                          Développement Cloud (Infrastructure)       0.63      0.36      0.46        95
-                              Développement Cloud (Kubernetes)       0.84      0.74      0.79       137
-                                        Développement Logiciel       0.75      0.76      0.76       958
-                                Développement Logiciel (CMake)       0.50      0.26      0.34       114
-                                  Développement Logiciel (Git)       0.68      0.63      0.65       161
-                              Développement Logiciel (Windows)       0.50      0.07      0.12        71
-                                Développement Mobile (Android)       0.00      0.00      0.00        18
-                                    Développement Mobile (iOS)       0.86      0.87      0.86       346
-                                       Développement Robotique       0.63      0.57      0.60        42
-                                            Développement Rust       0.87      0.70      0.78       219
-                               Développement Système (Windows)       0.70      0.57      0.62       129
-                                        Développement Terminal       0.54      0.30      0.38        50
-                                   Développement Web (Backend)       0.76      0.74      0.75      2445
-                                  Développement Web (Frontend)       0.84      0.83      0.83      4396
-                                             Générique / Autre       0.70      0.59      0.64      1540
-                                         IA / Machine Learning       0.84      0.81      0.82      5077
-                                                  IA / Musique       0.68      0.84      0.75       140
-                                            IA / Réseaux / DNS       0.75      0.55      0.64        49
-                                                 IA / Sécurité       0.60      0.49      0.54       168
-Ici, les mots-clés sont principalement liés à HTML et CSS, qui       0.66      0.47      0.55       552
-                                 Programmation Système (Linux)       0.58      0.40      0.47        94
+                                        Compression de Données       1.00      0.17      0.30        23
+                                      Développement Blockchain       0.00      0.00      0.00         6
+                                     Développement Cloud (AWS)       0.74      0.67      0.71        91
+                              Développement Cloud (Containers)       0.68      0.70      0.69        93
+                          Développement Cloud (Infrastructure)       0.58      0.37      0.45        87
+                              Développement Cloud (Kubernetes)       0.95      0.75      0.84       158
+                                        Développement Logiciel       0.77      0.75      0.76       982
+                                Développement Logiciel (CMake)       0.65      0.38      0.48       133
+                                  Développement Logiciel (Git)       0.74      0.63      0.68       168
+                              Développement Logiciel (Windows)       0.62      0.23      0.33        66
+                                Développement Mobile (Android)       1.00      0.05      0.10        20
+                                    Développement Mobile (iOS)       0.91      0.88      0.90       364
+                                       Développement Robotique       0.74      0.47      0.57        49
+                                            Développement Rust       0.89      0.73      0.81       243
+                               Développement Système (Windows)       0.76      0.53      0.63       128
+                                        Développement Terminal       0.61      0.35      0.44        55
+                                   Développement Web (Backend)       0.76      0.73      0.75      2478
+                                  Développement Web (Frontend)       0.85      0.81      0.83      4304
+                                             Générique / Autre       0.71      0.59      0.64      1500
+                                         IA / Machine Learning       0.83      0.82      0.82      4976
+                                                  IA / Musique       0.78      0.81      0.79       162
+                                            IA / Réseaux / DNS       0.71      0.65      0.68        63
+                                                 IA / Sécurité       0.66      0.47      0.55       159
+Ici, les mots-clés sont principalement liés à HTML et CSS, qui       0.66      0.41      0.50       493
+                                 Programmation Système (Linux)       0.63      0.51      0.56       108
 
-                                                     micro avg       0.80      0.74      0.77     17000
-                                                     macro avg       0.66      0.52      0.56     17000
-                                                  weighted avg       0.79      0.74      0.76     17000
-                                                   samples avg       0.75      0.75      0.73     17000
+                                                     micro avg       0.80      0.74      0.77     16909
+                                                     macro avg       0.73      0.54      0.59     16909
+                                                  weighted avg       0.80      0.74      0.77     16909
+                                                   samples avg       0.75      0.75      0.73     16909
