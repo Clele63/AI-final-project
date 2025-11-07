@@ -168,3 +168,11 @@ Liste des thèmes uniques générés :
 - Ici, les mots-clés sont principalement liés à HTML et CSS, qui
 - Programmation Système (Linux)
 ```
+
+► [*Lire le rapport d'étape 1 : Clustering*](/docs/rapport_clustering.md)
+
+► [*Lire le rapport d'étape 3 : Génération*](/docs/rapport_generation.md)
+
+---
+
+► [*Retour*](/README.md)

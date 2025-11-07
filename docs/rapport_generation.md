@@ -97,3 +97,11 @@ Les résultats fonctionnent, mais restent bridés par :
 * l'utilisation d'un modèle trop léger pour la tâche.
 
 Une version aboutie demanderait un modèle plus robuste et un pipeline d'entraînement mieux alimenté en texte de qualité.
+
+► [*Lire le rapport d'étape 1 : Clustering*](/docs/rapport_clustering.md)
+
+► [*Lire le rapport d'étape 2 : Classification*](/docs/rapport_classification.md)
+
+---
+
+► [*Retour*](/README.md)

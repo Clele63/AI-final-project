@@ -45,3 +45,5 @@ Les deux champs sont combinés en un **full_text**, permettant d’associer :
 Après filtrage des dépôts vides ou trop courts, le jeu de données final contient :
 
 **56 641 dépôts** utilisables pour l’entraînement  
+
+► [*Retour*](/README.md)

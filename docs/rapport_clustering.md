@@ -126,3 +126,13 @@ La distribution reste très déséquilibrée. L'étape 2 appliquera donc une év
 * Quelques "méga-clusters" regroupent la majorité des dépôts (ex : "Développement Web (Frontend)", "IA / Machine Learning")
 * Certains clusters très petits (ex : "Développement Blockchain")
 * Cette distribution justifie l'utilisation d'une **moyenne pondérée (weighted avg)** pour évaluer le classifieur de l'étape 2.
+
+---
+
+► [*Lire le rapport d'étape 2 : Classification*](/docs/rapport_classification.md)
+
+► [*Lire le rapport d'étape 3 : Génération*](/docs/rapport_generation.md)
+
+---
+
+► [*Retour*](/README.md)
