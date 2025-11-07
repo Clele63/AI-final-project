@@ -1,74 +1,85 @@
 # Rapport d'Étape 1 : Découverte des Catégories (Clustering)
 
-Cette première étape (step1_create_categories.py) vise à répondre à la question : "Quels sont les 50 thèmes principaux présents dans nos 56 000 dépôts ?"
+Cette première étape, exécutée par `step1_create_categories.py`, est entièrement non supervisée. Son objectif est de répondre à la question : "Quels sont les 50 thèmes sémantiques principaux présents dans nos 56 000 dépôts ?"
 
-## 4.1. Vectorisation Sémantique
+Le résultat de cette étape constitue la **base de connaissances** de nos catégories, qui servira de vérité terrain (ground truth) pour l'étape 2.
 
-Nous ne pouvons pas utiliser directement le texte. Nous devons le transformer en vecteurs numériques (embeddings) qui représentent le "sens".
+## 1. Démarche de Clustering
 
-### Choix du modèle : all-MiniLM-L6-v2
+### 1.1. Vectorisation Sémantique
 
-Nous avons choisi ce modèle de Sentence-Transformers car il offre un excellent équilibre entre vitesse et performance. Il est conçu pour générer des embeddings de phrases de haute qualité, ce qui est parfait pour capturer la sémantique d'une description ou d'un README.
+Pour regrouper les dépôts par "thème", nous transformons leur texte (`full_text`) en vecteurs numériques (**embeddings**) qui représentent leur sens.
 
-### Défi de Mémoire : MiniBatchKMeans
+* **Choix du modèle :** `all-MiniLM-L6-v2` (Sentence-Transformers)
 
-Le jeu de données (plusieurs Go) ne tient pas en RAM. Nous ne pouvons pas charger tous les embeddings d'un coup. Pour contourner ce problème, le script lit le CSV par morceaux (chunks) de 2000 lignes.
+  * Rapide et léger
+  * Produits des embeddings de 384 dimensions
+  * Capturent le sens global des phrases ou paragraphes, parfait pour description et README
 
-Sur chaque morceau, nous entraînons de manière incrémentale un modèle MiniBatchKMeans, qui est conçu pour apprendre "par lots" sans nécessiter l'ensemble des données en mémoire.
+### 1.2. Le Défi de la Mémoire : Clustering Incrémental
 
-### Concept du script step1_create_categories.py
+**Problème :** le jeu de données est trop volumineux pour être chargé en RAM. Un K-Means standard n'est pas viable.
+
+**Solution :** MiniBatchKMeans (clustering incrémental)
+
+* Lecture du CSV par morceaux (chunks) de 2000 lignes
+* Génération des embeddings pour chaque chunk
+* Mise à jour des centres des clusters "à la volée"
+
+#### Concept clé (step1_create_categories.py)
 
 ```python
+# 1. Initialiser le modèle d'embedding (GPU)
 embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
 
+# 2. Initialiser le clustering pour 50 thèmes
 kmeans = MiniBatchKMeans(n_clusters=50, n_init='auto', batch_size=256)
 
+# 3. Boucler sur les chunks du CSV
 for chunk in pd.read_csv("github_data_with_readmes.csv", chunksize=2000):
     chunk['full_text'] = chunk['description'].fillna('') + ' ' + chunk['readme_content'].fillna('')
     embeddings = embedding_model.encode(chunk['full_text'].tolist())
     kmeans.partial_fit(embeddings)
 ```
 
-## 4.2. Nommage des Catégories (Le défi "Non Supervisé")
+## 2. Nommage des Catégories (Semi-Manuel)
 
-Après l'étape 4.1, nous avons 50 clusters, mais ce ne sont que des numéros (de 0 à 49). Pour les rendre utiles, nous devons leur donner un nom lisible.
+Après clustering, nous avons 50 clusters. Ce sont des prototypes (vecteurs centraux) mais les numéros seuls (0 à 49) ne sont pas lisibles.
 
-### Analyse TF-IDF
+### 2.1. Sortie Automatique : TF-IDF
 
-Pour chaque cluster, le script regroupe tous les textes qui lui appartiennent et effectue une analyse TF-IDF. Cela permet d'extraire les mots-clés les plus importants et distinctifs de ce groupe.
-Le script sauvegarde ces mots-clés dans outputs/step1_clustering/cluster_top_keywords.json.
+* Pour chaque cluster, regrouper les textes et effectuer une analyse TF-IDF
+* Extraire les **5 mots-clés les plus distinctifs**
+* Sauvegarde dans : `outputs/step1_clustering/cluster_top_keywords.json`
 
-Exemple de sortie (pour "Cluster 1") : ["ai", "model", "torch", "llm", "agent"]
+Exemple :
 
-### Nommage Manuel
+```json
+{
+  "Cluster 1": {"name": "ai, model, torch, llm, agent", "repo_count": 5077},
+  "Cluster 2": {"name": "ios, swift, apple, xcode, mobile", "repo_count": 346}
+}
+```
 
-Nous utilisons ce JSON comme un dictionnaire pour remplacer manuellement les noms dans outputs/step1_clustering/github_categories_database.json.
+### 2.2. Action Manuelle : Nommage
 
-**Action manuelle** : Cluster 1 - ai, model, torch... → "IA / Machine Learning"
+* Éditer `github_categories_database.json` pour donner un **nom clair** à chaque cluster
+* Exemple :
 
-Ce processus semi-manuel est crucial : il combine la puissance de la découverte non supervisée (basée sur les données) avec l'intelligence humaine (pour créer des noms intelligibles).
+```json
+"category_name": "IA / Machine Learning"  # pour Cluster 1
+```
 
-## 4.3. Évaluation (Étape 1)
+* Cette approche **semi-manuelle** garantit des catégories intelligibles et pertinentes pour un humain.
 
-La sortie principale est github_categories_database.json, qui contient les 50 "vecteurs prototypes" (le centre de chaque cluster) et leurs noms lisibles.
+## 3. Analyse des Sorties
 
-Nous générons aussi un graphique de distribution pour analyser la répartition des données :
+* Artefact principal : `github_categories_database.json` (50 prototypes et noms lisibles)
+* Graphique de distribution : `outputs/step1_clustering/cluster_distribution.png`
 
-### Liste (partielle) des thèmes générés (après nommage manuel) :
+**Analyse :**
 
-* Compression de Données
-* Développement Blockchain
-* Développement Cloud (AWS)
-* Développement Cloud (Containers)
-* Développement Logiciel
-* Développement Mobile (iOS)
-* Développement Rust
-* Développement Web (Backend)
-* Développement Web (Frontend)
-* IA / Machine Learning
-
-### Analyse
-
-Le graphique confirme que les clusters ne sont pas équilibrés. On observe quelques "méga-clusters" (ex: Cluster 5, 12, 30) qui regroupent des thèmes très généraux (comme "outils de développement" ou "projets web"). À l'inverse, de nombreux clusters sont très petits, indiquant des niches sémantiques très spécifiques (ex: "Développement Blockchain").
-
-Cette distribution inégale est normale et justifie l'utilisation d'une moyenne pondérée (weighted avg) lors de l'évaluation du classifieur à l'étape 2.
+* Les clusters ne sont pas équilibrés
+* Quelques "méga-clusters" regroupent la majorité des dépôts (ex : "Développement Web (Frontend)", "IA / Machine Learning")
+* Certains clusters très petits (ex : "Développement Blockchain")
+* Cette distribution justifie l'utilisation d'une **moyenne pondérée (weighted avg)** pour évaluer le classifieur de l'étape 2.

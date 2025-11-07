@@ -1,112 +1,101 @@
 # Rapport d'Étape 2 : Classification Supervisée (Multi-Label)
 
-Maintenant que nous avons 50 prototypes de catégories (un vecteur central et un nom pour "IA / ML", "Web Dev", etc.), nous entraînons un classifieur (`step2_train_classifier.py`) à les prédire.
+Maintenant que nous avons notre "vérité terrain" de l'Étape 1 (un fichier `github_categories_database.json` contenant 50 prototypes de catégories nommés), nous pouvons passer à l'entraînement supervisé.
 
-## 5.1. La Logique "Multi-Label"
+L'objectif de cette étape (`step2_train_classifier.py`) est d'entraîner un modèle Transformer à prédire ces 50 tags pour n'importe quel dépôt.
 
-Nous ne voulons pas forcer un dépôt dans une seule catégorie. Un projet peut être à la fois IA et Web Dev.
+## 1. La Logique "Multi-Label" (La Clé du Projet)
 
-L'approche "la catégorie la plus proche gagne" (argmax) est trop restrictive. Nous avons donc opté pour un **seuil de similarité**.
+La plus grande erreur serait de forcer chaque dépôt dans une seule catégorie (ex: "la catégorie la plus proche"). Un projet est presque toujours multi-thème.
 
-### Création des Labels (Multi-Label)
+Notre approche résout ce problème en créant des étiquettes (labels) multi-label avant l'entraînement.
 
-Pour chaque dépôt :
+### 1.1. Création des Labels (Seuil de Similarité)
 
-1. Calculer son embedding `all-MiniLM-L6-v2`
-2. Calculer la similarité cosinus avec les 50 vecteurs prototypes de l'Étape 1
-3. Si la similarité dépasse **0.6**, assigner le tag correspondant
+Pour chaque dépôt de notre jeu de données, nous effectuons les opérations suivantes :
 
-Un dépôt peut recevoir 0, 1 ou N tags, transformant le problème en **classification multi-label**.
+* Calculer son embedding (avec `all-MiniLM-L6-v2`, le même que l'étape 1).
+* Calculer la similarité cosinus entre cet embedding et les 50 "vecteurs prototypes" (centres de cluster) de notre base de données.
+* Appliquer un seuil : Si la similarité avec un prototype dépasse 0.6, nous assignons le tag correspondant.
 
-#### Concept de création des labels
+Un dépôt peut donc recevoir 0, 1, ou N tags. C'est ce qui transforme notre problème en classification multi-label.
 
 ```python
+# Concept de la création de labels (multi-label) dans step2
+# repo_embeddings.shape: (56641, 384)
+# category_prototypes.shape: (50, 384)
+
 similarity_matrix = cosine_similarity(repo_embeddings, category_prototypes)
+# similarity_matrix.shape: (56641, 50)
+
+# Appliquer le seuil (0.6) pour obtenir les "tags"
 labels_multi_hot = (similarity_matrix > 0.6).astype(int)
-# labels_multi_hot est maintenant un tableau [56641, 50]
+
+# labels_multi_hot est un tableau [56641, 50]
 # ex: [1, 0, 0, 1, 0, ...] signifie que le dépôt a les tags "0" et "3".
 ```
 
-## 5.2. Fine-Tuning du Modèle (DistilRoBERTa)
+Ce tableau `labels_multi_hot` devient notre "Y" (nos étiquettes cibles) pour l'entraînement supervisé.
 
-Nous utilisons un modèle Transformer, `distilroberta-base`, léger et performant.
+## 2. Fine-Tuning du Modèle Transformer
 
-* Jeu de données : train (80%) / test (20%)
-* Configuration du modèle pour **multi-label**
+### 2.1. Choix du Modèle : distilroberta-base
 
-#### Concept du chargement du modèle
+Nous utilisons un modèle Transformer, `distilroberta-base`. C'est un excellent compromis entre performance et ressources : il est plus léger et rapide que `roberta-base` tout en conservant une grande partie de sa performance. Le jeu de données est divisé en train (80%) et test (20%).
+
+### 2.2. La Configuration Technique Essentielle
+
+L'étape la plus importante du script `step2_train_classifier.py` est la configuration du modèle pour qu'il comprenne la nature "multi-label" de notre problème.
 
 ```python
 from transformers import AutoModelForSequenceClassification
 
-N_LABELS = 50  # Nos 50 catégories
+N_LABELS = 50 # Nos 50 catégories
 
 model = AutoModelForSequenceClassification.from_pretrained(
     "distilroberta-base",
     num_labels=N_LABELS,
-    problem_type="multi_label_classification"  # essentiel pour multi-label
+    problem_type="multi_label_classification"
 )
 ```
 
-* `problem_type="multi_label_classification"` :
+Spécifier `problem_type="multi_label_classification"` n'est pas un détail. Cela change fondamentalement le comportement du modèle :
 
-  * pas de softmax global
-  * sigmoïde indépendante sur chaque sortie
-* Fonction de perte : **BCEWithLogitsLoss** (Binary Cross-Entropy)
+* **Architecture** : Il n'utilise pas une couche Softmax finale (qui force la somme des probabilités à 1 et ne permet qu'un seul gagnant).
+* **Sortie** : Il applique une fonction Sigmoid indépendante sur chacun des 50 neurones de sortie. Chaque tag est traité comme une prédiction binaire (oui/non) indépendante.
+* **Fonction de Perte** : Il utilise la perte BCEWithLogitsLoss (Binary Cross-Entropy), qui évalue chaque prédiction de tag (oui/non) individuellement, plutôt que CrossEntropyLoss (utilisée pour la classification mono-classe).
 
-## 6. Évaluation et Résultats
+## 3. Évaluation et Analyse des Résultats
 
-### 6.1. Performance de l'Entraînement
+Après l'entraînement (3 époques), le Trainer de Hugging Face évalue le modèle sur l'ensemble de test (les 20% de données qu'il n'a jamais vues).
 
-Les courbes de perte montrent une convergence saine : Training Loss et Validation Loss diminuent ensemble sur 3 époques. La validation ne remonte pas, indiquant un faible sur-apprentissage et une bonne généralisation.
+### 3.1. Performance de l'Entraînement
 
-### 6.2. Rapport de Classification
+* **Artefact** : `outputs/step2_classification/training_plots.png`
 
-Le tableau suivant montre la performance finale du modèle sur l'ensemble de test (extraits) :
+Analyse : Les courbes de perte montrent une convergence saine du modèle. La Training Loss et la Validation Loss diminuent de concert au fil des 3 époques. La Validation Loss ne remonte pas, indiquant que le modèle ne tombe pas significativement en sur-apprentissage.
 
-| Catégorie                        | Precision | Recall | F1-score | Support |
-| -------------------------------- | --------- | ------ | -------- | ------- |
-| Compression de Données           | 1.00      | 0.05   | 0.10     | 19      |
-| Développement Blockchain         | 0.00      | 0.00   | 0.00     | 7       |
-| Développement Cloud (AWS)        | 0.79      | 0.68   | 0.73     | 87      |
-| Développement Cloud (Containers) | 0.70      | 0.79   | 0.74     | 86      |
-| ...                              | ...       | ...    | ...      | ...     |
-| IA / Machine Learning            | 0.84      | 0.81   | 0.82     | 5077    |
-| ...                              | ...       | ...    | ...      | ...     |
+### 3.2. Rapport de Classification Détaillé
 
-**Micro avg** : 0.77, **Weighted avg** : 0.76, **Samples avg** : 0.73
+* **Artefact** : `outputs/step2_classification/classification_report_multilabel.txt`
 
-> Note : La matrice de confusion N x N n'est pas pertinente en multi-label.
+Le rapport détaille la performance pour chaque tag (précision, rappel, F1-score et support).
 
-### Analyse des Résultats
+**Analyse des Métriques** :
 
-* **Performance globale** : F1 weighted = 0.76 → bon équilibre entre précision et rappel
-* **Haute performance (F1 > 0.80)** :
+* **Performance Globale (F1-Score)** : weighted avg F1 = 0.76, très encourageant, pondéré pour tenir compte du déséquilibre des classes.
+* **Haute performance (F1 > 0.80)** : iOS, Web Frontend, IA/Machine Learning.
+* **Faible performance (F1 < 0.20)** : Blockchain, Android, Compression de données, Logiciel Windows. Principalement dû au faible nombre d'exemples.
+* **Cas Intéressants** : Backend vs Frontend distingués correctement, CMake plus difficile à reconnaître.
 
-  * Développement Mobile (iOS)
-  * Développement Web (Frontend)
-  * IA / Machine Learning
-* **Faible performance (F1 < 0.20)** :
+## 4. Conclusion
 
-  * Compression de Données (19)
-  * Développement Blockchain (7)
-  * Développement Mobile (Android) (18)
-  * Développement Logiciel (Windows) (71)
-* **Cas intéressants** :
+Le passage à une approche multi-label avec 50 catégories est un succès. Le modèle identifie efficacement les thèmes clairs et à fort volume, avec un F1-score moyen de 0.76.
 
-  * Développement Web Backend (0.75) vs Frontend (0.83) bien séparés
-  * Développement Logiciel (CMake) (0.34) et Programmation Système (Linux) (0.47) plus difficiles à distinguer
-
-## 7. Conclusion
-
-La classification multi-label avec 50 catégories est un succès :
-
-* F1-score moyen = 0.76
-* Identification correcte des thèmes sémantiques clairs
-* Les faibles performances sont liées au faible support, pas au modèle
+Les faibles performances sont presque exclusivement dues à un faible support dans le jeu de données.
 
 ### Prochaines étapes possibles
 
-* **Ajustement du seuil** : tester 0.55 ou 0.65 pour optimiser le nombre de tags par dépôt
-* **Modèle plus grand** : remplacer `distilroberta-base` par `roberta-base` pour mieux distinguer catégories proches
-* **Nettoyage avancé du texte** : retirer code, badges, tables pour améliorer la qualité des embeddings
+* Ajustement du seuil (ex: 0.55 ou 0.65) pour optimiser le compromis précision/rappel.
+* Modèle plus grand (`roberta-base`) pour améliorer la distinction des catégories proches.
+* Nettoyage avancé des README pour réduire le bruit et améliorer la qualité des embeddings.
